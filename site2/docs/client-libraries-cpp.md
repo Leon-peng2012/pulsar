@@ -1,6 +1,6 @@
 ---
 id: client-libraries-cpp
-title: The Pulsar C++ client
+title: Pulsar C++ Client
 sidebar_label: C++
 ---
 
@@ -10,9 +10,9 @@ The Pulsar C++ client has been successfully tested on **MacOS** and **Linux**.
 
 ## Linux
 
-### Install
+### Installing the RPM and Debian packages
 
-> Since the 2.1.0 release, Pulsar ships pre-built RPM and Debian packages. You can choose to download
+> Pulsar ships pre-built RPM and Debian packages from 2.1.0 release. You can choose to download
 > and install those packages instead of building them yourself.
 
 #### RPM
@@ -23,33 +23,33 @@ The Pulsar C++ client has been successfully tested on **MacOS** and **Linux**.
 | [client-debuginfo]({{pulsar:dist_rpm:client-debuginfo}}) | [asc]({{pulsar:dist_rpm:client-debuginfo}}.asc),  [sha512]({{pulsar:dist_rpm:client-debuginfo}}.sha512) |
 | [client-devel]({{pulsar:dist_rpm:client-devel}}) | [asc]({{pulsar:dist_rpm:client-devel}}.asc),  [sha512]({{pulsar:dist_rpm:client-devel}}.sha512) |
 
-To install a RPM package, download the RPM packages and install them using the following command:
+To install RPM packages, download and install them using the following command:
 
 ```bash
 $ rpm -ivh apache-pulsar-client*.rpm
 ```
 
-#### DEB
+#### Debain
 
 | Link | Crypto files |
 |------|--------------|
 | [client]({{pulsar:deb:client}}) | [asc]({{pulsar:dist_deb:client}}.asc), [sha512]({{pulsar:dist_deb:client}}.sha512) |
 | [client-devel]({{pulsar:deb:client-devel}}) | [asc]({{pulsar:dist_deb:client-devel}}.asc),  [sha512]({{pulsar:dist_deb:client-devel}}.sha512) |
 
-To install a DEB package, download the DEB packages and install them using the following command:
+To install Debain packages, download and install them using the following command:
 
 ```bash
 $ apt install ./apache-pulsar-client*.deb
 ```
 
-### Build
+### Building the RPM and Debian packages
 
-> If you want to build RPM and Debian packages off latest master, you can follow the instructions
-> below to do so. All the instructions are run at the root directory of your cloned Pulsar
-> repo.
+> To build RPM and Debian packages of latest master, follow the instructions as below.
+> All the instructions are run at the root directory of your cloned Pulsar
+> repository.
 
-There are recipes that build RPM and Debian packages containing a
-statically linked `libpulsar.so` / `libpulsar.a` with all the required
+There are recipes that build the RPM and Debian packages containing a
+statically linked `libpulsar.so` / `libpulsar.a` with all required
 dependencies.
 
 To build the C++ library packages, first build the Java packages:
@@ -60,11 +60,13 @@ mvn install -DskipTests
 
 #### RPM
 
+To build RPM packages, use the following command:
+
 ```shell
 pulsar-client-cpp/pkg/rpm/docker-build-rpm.sh
 ```
 
-This will build the RPM inside a Docker container and it will leave the RPMs
+The RPM packages will be built inside a Docker container and be placed
 in `pulsar-client-cpp/pkg/rpm/RPMS/x86_64/`.
 
 | Package name | Content |
@@ -73,15 +75,15 @@ in `pulsar-client-cpp/pkg/rpm/RPMS/x86_64/`.
 | pulsar-client-devel | Static library `libpulsar.a` and C++ and C headers |
 | pulsar-client-debuginfo | Debug symbols for `libpulsar.so` |
 
-#### Deb
+#### Debain
 
-To build Debian packages:
+To build Debian packages, use the following command:
 
 ```shell
 pulsar-client-cpp/pkg/deb/docker-build-deb.sh
 ```
 
-Debian packages will be created at `pulsar-client-cpp/pkg/deb/BUILD/DEB/`
+Tge Debian packages will be created at `pulsar-client-cpp/pkg/deb/BUILD/DEB/`
 
 | Package name | Content |
 |-----|-----|
@@ -90,32 +92,32 @@ Debian packages will be created at `pulsar-client-cpp/pkg/deb/BUILD/DEB/`
 
 ## MacOS
 
-Pulsar releases are available through the [Homebrew](https://brew.sh/) core repository. You can install the C++ client 
-library with:
+Pulsar releases are available in the [Homebrew](https://brew.sh/) core repository. You can install the C++ client 
+library by using the following command:
 
 ```shell
 brew install libpulsar
 ```
 
-This will install the package with the library and headers.
+The RPM and Debain packages will be installed with the library and headers.
 
-## Connection URLs
+## Protocol URLs
 
 
 To connect to Pulsar using client libraries, you need to specify a Pulsar protocol URL.
 
-Pulsar protocol URLs are assigned to specific clusters, use the pulsar URI scheme and have a default port of 6650. Here’s an example for localhost:
+Pulsar protocol URLs are assigned to specific clusters, which use the pulsar URI scheme and the default port of 6650. Here is an example for localhost:
 
 ```http
 pulsar://localhost:6650
 ```
 
-A URL for a production Pulsar cluster may look something like this:
+A URL for a production Pulsar cluster is shown as below:
 ```http
 pulsar://pulsar.us-west.example.com:6650
 ```
 
-If you’re using TLS authentication, the URL will look like something like this:
+When TLS authentication is enabled, the URL is shown as below:
 ```http
 pulsar+ssl://pulsar.us-west.example.com:6651
 ```
